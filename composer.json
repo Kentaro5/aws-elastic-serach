@@ -1,0 +1,16 @@
+{
+    "name": "root/aws-elastic-serach",
+    "authors": [
+        {
+            "name": "Kentaro Minami",
+            "email": "mkentar555@gmail.com"
+        }
+    ],
+    "require": {
+        "elasticsearch/elasticsearch": "~7.0",
+        "vlucas/phpdotenv": "^5.1"
+    },
+    "autoload": {
+        "psr-4": { "App\\": "AWS" }
+    }
+}
