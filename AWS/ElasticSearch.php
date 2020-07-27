@@ -140,4 +140,32 @@ class ElasticSearch
         echo "**********************";
         echo "</pre>";
     }
+
+    /**
+    * show all document
+    **/
+    public function showAllData():Void
+    {
+        $client = $this->createHost();
+
+        $params = [
+            
+            'body' => [
+                "size" => 20,
+                "query"=> [
+                    "match_all"=> new class {
+                    }
+                ]
+            ]
+        ];
+
+        $response = $client->search($params);
+        echo "<pre>";
+        echo "**********************";
+        print_r($response);
+        echo "**********************";
+        var_dump();
+        echo "**********************";
+        echo "</pre>";
+    }
 }
