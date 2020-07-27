@@ -168,4 +168,38 @@ class ElasticSearch
         echo "**********************";
         echo "</pre>";
     }
+
+    /**
+    * Use Bulk Index method
+    *@url https://www.elastic.co/guide/en/elasticsearch/client/php-api/current/indexing_documents.html
+    * 複数の処理をまとめて一つのリクエストで要求できるAPI
+    * このAPIを利用することで一つずつリクエストする場合に比べ、処理速度を大幅に稼ぐことができる
+    **/
+    public function bulkIndex():Void
+    {
+        $client = $this->createHost();
+
+        for ($i = 0; $i < 100; $i++) {
+            $params['body'][] = [
+                'index' => [
+                    '_index' => 'my_index'.$i,
+                ]
+            ];
+
+            $params['body'][] = [
+                'my_field'     => 'my_value'.$i,
+                'second_field' => 'some more values'.$i
+            ];
+        }
+
+        $responses = $client->bulk($params);
+
+        echo "<pre>";
+        echo "**********************";
+        print_r($response);
+        echo "**********************";
+        var_dump();
+        echo "**********************";
+        echo "</pre>";
+    }
 }
