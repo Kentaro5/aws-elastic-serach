@@ -202,4 +202,28 @@ class ElasticSearch
         echo "**********************";
         echo "</pre>";
     }
+
+
+    /**
+    * Delete document
+    **/
+    public function delete():Void
+    {
+        $client = $this->createHost();
+
+        $params = [
+            'index' => 'new_index',
+           'type' => 'new_type',
+           'id' => '1',
+        ];
+
+        $response = $client->delete($params);
+        echo "<pre>";
+        echo "**********************";
+        print_r($response);
+        echo "**********************";
+        var_dump();
+        echo "**********************";
+        echo "</pre>";
+    }
 }
