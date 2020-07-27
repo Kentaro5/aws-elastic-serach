@@ -58,4 +58,27 @@ class ElasticSearch
             echo "Exception : ".$e->getMessage();
         }
     }
+
+    /**
+    * Get a document
+    **/
+    public function get():Void
+    {
+        $client = $this->createHost();
+
+        $params = [
+            'index' => 'new_index',
+            'type' => 'new_type',
+            'id' => '1'
+        ];
+
+        $response = $client->get($params);
+        echo "<pre>";
+        echo "**********************";
+        print_r($response);
+        echo "**********************";
+        var_dump();
+        echo "**********************";
+        echo "</pre>";
+    }
 }
