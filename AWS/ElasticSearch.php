@@ -81,4 +81,34 @@ class ElasticSearch
         echo "**********************";
         echo "</pre>";
     }
+
+    /**
+    * Search a document
+    * 参考にしたやつ：https://qiita.com/NAO_MK2/items/630f2c4caa0e8a42407c
+    **/
+    public function search():Void
+    {
+        $client = $this->createHost();
+
+        $params = [
+            'index' => 'new_index',
+            'type' => 'new_type',
+            'body' => [
+                "query"=> [
+                    'wildcard' => [
+                        'Description' => '*Z*',
+                    ]
+                ]
+            ]
+        ];
+
+        $response = $client->search($params);
+        echo "<pre>";
+        echo "**********************";
+        print_r($response);
+        echo "**********************";
+        var_dump();
+        echo "**********************";
+        echo "</pre>";
+    }
 }

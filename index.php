@@ -8,4 +8,4 @@ $dotenv->load();
 
 $elastic_search = new ElasticSearch();
 
-$elastic_search->get();
+$elastic_search->search();
