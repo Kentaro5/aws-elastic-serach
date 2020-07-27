@@ -111,4 +111,33 @@ class ElasticSearch
         echo "**********************";
         echo "</pre>";
     }
+
+    /**
+    * Update a document
+    **/
+    public function update():Void
+    {
+        $client = $this->createHost();
+
+        $params = [
+            'index' => 'new_index',
+            'type' => 'new_type',
+            'id' => '1',
+            'body' => [
+                'doc' => [
+                    'Description' =>'test'
+                ]
+            ]
+        ];
+
+
+        $response = $client->update($params);
+        echo "<pre>";
+        echo "**********************";
+        print_r($response);
+        echo "**********************";
+        var_dump();
+        echo "**********************";
+        echo "</pre>";
+    }
 }
